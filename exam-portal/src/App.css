@@ -1,0 +1,128 @@
+
+.navbar {
+  background: #2563eb;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+.nav-links a:hover {
+  color: #facc15;
+}
+
+/* Home Page */
+.home {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  color: white;
+  min-height: 100vh;
+}
+.home h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.home p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.home-buttons .btn {
+  margin: 10px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+}
+.teacher-btn {
+  background: #facc15;
+  color: black;
+}
+.student-btn {
+  background: #22c55e;
+  color: white;
+}
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Dashboard Pages */
+.dashboard {
+  padding: 50px;
+  background: #f3f4f6;
+  min-height: 100vh;
+}
+.dashboard h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.card h3 {
+  margin-bottom: 10px;
+}
+
+/* Login Page */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #10b981, #3b82f6);
+}
+.login-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  width: 320px;
+  text-align: center;
+}
+.login-box h2 {
+  margin-bottom: 20px;
+}
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.login-box button:hover {
+  background: #1d4ed8;
+}
