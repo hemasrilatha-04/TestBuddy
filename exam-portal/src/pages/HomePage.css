@@ -1,0 +1,145 @@
+/* HomePage.css */
+.homepage {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.features {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.feature {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+}
+
+.feature h3 {
+  color: #3498db;
+  margin-bottom: 15px;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #ecf0f1;
+  margin: 40px 0;
+}
+
+.role-selection {
+  margin-top: 40px;
+}
+
+.role-selection h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.roles {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.role-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 25px;
+  margin: 15px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.role-content h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.role-content ul {
+  text-align: left;
+  padding-left: 20px;
+  margin: 15px 0;
+}
+
+.role-content li {
+  margin-bottom: 8px;
+  color: #7f8c8d;
+}
+
+.role-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.role-button.student {
+  background-color: #3498db;
+  color: white;
+}
+
+.role-button.student:hover {
+  background-color: #2980b9;
+}
+
+.role-button.teacher {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.role-button.teacher:hover {
+  background-color: #27ae60;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+  }
+  
+  .roles {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .role-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

@@ -1,0 +1,19 @@
+.teacher-alerts {
+  text-align: left;
+}
+
+.teacher-alerts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.teacher-alerts li {
+  background: #f3f4f6;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}

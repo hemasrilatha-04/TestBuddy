@@ -1,0 +1,116 @@
+/* student-dashboard.css */
+
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.dashboard-header {
+  width: 100%;
+  background-color: #4e73df;
+  color: white;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Exam List */
+.exam-list {
+  width: 100%;
+  margin-top: 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.exam-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fc;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.exam-list li button {
+  background-color: #1cc88a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.exam-list li button:hover {
+  background-color: #17a673;
+}
+
+/* Question Section */
+.question-section {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.question {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question p {
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.question label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.question input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #4e73df;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #2e59d9;
+}
