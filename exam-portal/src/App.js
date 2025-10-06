@@ -7,6 +7,7 @@ import StudentDashboard from './pages/StudentDashboard';
 import TeacherDashboard from './pages/TeacherDashboard';
 import CreateExam from './pages/CreateExam';
 import ExamPage from './pages/ExamPage';
+import LoginPage from './pages/LoginPage';
 import './App.css';
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
           <Route 
             path="/" 
             element={<HomePage onLogin={handleLogin} />} 
+          />
+          <Route
+            path="/login"
+            element={<LoginPage setAuth={(auth) => setUser(auth?.role || null)} />}
           />
           <Route 
             path="/student" 
