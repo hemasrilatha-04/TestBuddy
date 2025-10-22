@@ -1,4 +1,11 @@
-require('dotenv').config();
+try {
+  require('dotenv').config();
+  console.log('✅ Environment variables loaded from .env file');
+} catch (error) {
+  console.log('❌ Failed to load .env file:', error.message);
+  process.exit(1); // Stop server if .env fails
+}
+
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
@@ -9,19 +16,32 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Validate that MONGODB_URI exists
+if (!process.env.MONGODB_URI) {
+  console.log('❌ ERROR: MONGODB_URI is not defined in .env file');
+  console.log('💡 Please create a .env file with MONGODB_URI=your_connection_string');
+  process.exit(1);
+}
+
 const MONGODB_URI = process.env.MONGODB_URI;
 
 console.log('🚀 Starting Exam Portal Server...');
 
-// Connect to MongoDB
-mongoose.connect(MONGODB_URI)
+// Connect to MongoDB with better options
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  retryWrites: true,
+  w: 'majority'
+})
 .then(() => {
-  console.log('✅ Connected to MongoDB Atlas!');
+  console.log('✅ Connected to MongoDB successfully!');
   console.log('📊 Database: exam_portal');
 })
 .catch((error) => {
   console.log('❌ MongoDB Connection Failed:', error.message);
-  process.exit(1);
+  console.log('💡 Please check your MONGODB_URI in .env file');
+  process.exit(1); // Stop server if DB connection fails
 });
 
 // Simple login
@@ -38,11 +58,62 @@ app.post('/api/auth/login', (req, res) => {
 
 // Health check
 app.get('/api/health', (req, res) => {
-  const dbStatus = mongoose.connection.readyState === 1 ? 'Connected' : 'Connecting';
+  const dbStatus = mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected';
   res.json({ 
     status: 'OK', 
     database: dbStatus,
+    message: dbStatus === 'Connected' ? 'MongoDB is connected' : 'MongoDB is disconnected',
     timestamp: new Date().toISOString()
+  });
+});
+// ==================== EXAM ENDPOINTS ====================
+
+// Test exam creation endpoint
+app.post('/api/exams/create', (req, res) => {
+  const { examName, subject, duration, questions } = req.body;
+  
+  console.log('📝 Creating exam:', { examName, subject, duration });
+  console.log('📋 Questions:', questions);
+  
+  // For now, just return success with the data
+  res.json({
+    success: true,
+    message: 'Exam created successfully!',
+    examData: {
+      examId: 'EXAM_' + Date.now(),
+      examName,
+      subject, 
+      duration,
+      questions: questions || [],
+      createdAt: new Date().toISOString()
+    }
+  });
+});
+
+// Get all exams endpoint
+app.get('/api/exams', (req, res) => {
+  console.log('📋 Fetching all exams');
+  
+  res.json({
+    success: true,
+    exams: [
+      {
+        id: 'EXAM_001',
+        name: 'Mathematics Midterm',
+        subject: 'Math',
+        duration: 60,
+        totalQuestions: 10,
+        createdAt: new Date().toISOString()
+      },
+      {
+        id: 'EXAM_002', 
+        name: 'Science Quiz',
+        subject: 'Science',
+        duration: 30,
+        totalQuestions: 5,
+        createdAt: new Date().toISOString()
+      }
+    ]
   });
 });
 
@@ -82,8 +153,16 @@ io.on('connection', (socket) => {
   });
 });
 
-// CHANGED PORT FROM 8080 TO 8081
 const PORT = process.env.PORT || 8081;
 server.listen(PORT, () => {
   console.log(`🌐 Server running on http://localhost:${PORT}`);
+  console.log(`🔍 Health check: http://localhost:${PORT}/api/health`);
+});
+
+// Handle graceful shutdown
+process.on('SIGINT', async () => {
+  console.log('🔄 Shutting down server gracefully...');
+  await mongoose.connection.close();
+  console.log('✅ MongoDB connection closed.');
+  process.exit(0);
 });
